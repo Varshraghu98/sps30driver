@@ -60,45 +60,21 @@ int main(void) {
 
         } else {
 
-            char buffer[32];
-
-    printk("measured values:\n");
-
-    float_to_string(buffer, sizeof(buffer), m.mc_1p0);
-    printk("\t%s pm1.0\n", buffer);
-
-    float_to_string(buffer, sizeof(buffer), m.mc_2p5);
-    printk("\t%s pm2.5\n", buffer);
-
-    float_to_string(buffer, sizeof(buffer), m.mc_4p0);
-    printk("\t%s pm4.0\n", buffer);
-
-    float_to_string(buffer, sizeof(buffer), m.mc_10p0);
-    printk("\t%s pm10.0\n", buffer);
-
-    float_to_string(buffer, sizeof(buffer), m.nc_0p5);
-    printk("\t%s nc0.5\n", buffer);
-
-    float_to_string(buffer, sizeof(buffer), m.nc_1p0);
-    printk("\t%s nc1.0\n", buffer);
-
-    float_to_string(buffer, sizeof(buffer), m.nc_2p5);
-    printk("\t%s nc2.5\n", buffer);
-
-    float_to_string(buffer, sizeof(buffer), m.nc_10p0);
-    printk("\t%s nc10.0\n", buffer);
-
-    float_to_string(buffer, sizeof(buffer), m.typical_particle_size);
-    printk("\t%s typical particle size\n\n", buffer);
+            printk("measured values:\n"
+                   "%f pm1.0\n"
+                   "%f pm2.5\n"
+                   "%f pm4.0\n"
+                   "%f pm10.0\n"
+                   "%f nc0.5\n"
+                   "%f nc1.0\n"
+                   "%f nc2.5\n"
+                   "%f nc4.5\n"
+                   "%f nc10.0\n"
+                   "%f typical particle size\n\n",
+                   m.mc_1p0, m.mc_2p5, m.mc_4p0, m.mc_10p0, m.nc_0p5, m.nc_1p0,
+                   m.nc_2p5, m.nc_4p0, m.nc_10p0, m.typical_particle_size);
     }
 }
 
     return 0;
-}
-
-
-void float_to_string(char *buffer, size_t buffer_size, float value) {
-    int int_part = (int)value;
-    int frac_part = (int)((value - int_part) * 100);  // Two decimal places
-    snprintf(buffer, buffer_size, "%d.%02d", int_part, frac_part);
 }
