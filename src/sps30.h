@@ -43,7 +43,7 @@ extern "C" {
 #define SPS30_I2C_ADDRESS 0x69
 #define SPS30_MAX_SERIAL_LEN 32
 /* 1s measurement intervals */
-#define SPS30_MEASUREMENT_DURATION_USEC 1000000
+#define SPS30_MEASUREMENT_DURATION_USEC 4000000
 /* 100ms delay after resetting the sensor */
 #define SPS30_RESET_DELAY_USEC 100000
 /** The fan is switched on but not running */
